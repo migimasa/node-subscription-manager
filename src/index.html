@@ -1,6 +1,27 @@
+<!--
+  **NOTE:** This is a template for index.html.
+  It uses ejs and htmlWebpackPlugin to generate a different index.html for each environment.
+  htmlWebpackPlugin will dynamially add references to the scripts and styles that it bundles
+  to this file. The generated bundles have hash-based filenames,
+  so it's necessary to add the references dynamically.
+  For more info on ejs, see http://www.embeddedjs.com.
+  For examples of using it with htmlWebpackPlugin,
+  see https://github.com/jaketrent/html-webpack-template/blob/master/index.ejs
+-->
 <!DOCTYPE html>
 <html>
 <head>
+  <% if (htmlWebpackPlugin.options.trackJSToken) { %>
+  <!-- BEGIN TRACKJS -->
+  <script>
+        window._trackJs = {
+            token: "54e03bb1066740abbdeac2236985702a"
+        };
+    </script>
+    <script src="https://cdn.trackjs.com/releases/current/tracker.js">
+    </script>
+  <!-- END TRACKJS -->
+  <% } %>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hello from code</title>
@@ -18,7 +39,5 @@
         </thead>
         <tbody id="users"></tbody>
     </table>
-
-    <script src="bundle.js"></script>
 </body>
 </html>
