@@ -1,10 +1,10 @@
 export const schema = {
     "type": "object",
     "properties": {
-      "users": {
+      "comicBookSeries": {
         "type": "array",
         "minItems": 3,
-        "maxItems": 5,
+        "maxItems": 10,
         "items": {
           "type": "object",
           "properties": {
@@ -13,22 +13,40 @@ export const schema = {
               "unique": true,
               "minimum": 1
             },
-            "firstName": {
-              "type": "string",
-              "faker": "name.firstName"
+            "writers": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 3,
+              "items": {
+                "type": "string",
+                "faker": "name.findName"
+              }
             },
-            "lastName": {
-              "type": "string",
-              "faker": "name.lastName"
+            "artists": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 3,
+              "items": {
+                "type": "string",
+                "faker": "name.findName"
+              }
             },
-            "email": {
+            "title": {
               "type": "string",
-              "faker": "internet.email"
+              "faker": "commerce.productName"
+            },
+            "publisher": {
+              "type": "string",
+              "faker": "company.companyName"
+            },
+            "publishDate": {
+              "type": "string",
+              "faker": "date.past"
             }
           },
-          "required": ["id", "firstName", "lastName", "email"]
+          "required": ["id", "writers", "artists", "title", "publisher", "publishDate"]
         }
       }
     },
-    "required": ["users"]
+    "required": ["comicBookSeries"]
   };

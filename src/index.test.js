@@ -9,12 +9,12 @@ describe('Our first test', () => {
 });
 
 describe('index.html', () => {
-    it('should have h1 that says Users', (done) => {
+    it('should have h1 that says Series', (done) => {
         const index = fs.readFileSync('./src/index.html', "utf-8");
 
         jsdom.env(index, (err, window) => {
             const h1 = window.document.getElementsByTagName('h1')[0];
-            expect(h1.innerHTML).to.equal('Users');
+            expect(h1.innerHTML).to.equal('Series');
             done();
             window.close();
         });
